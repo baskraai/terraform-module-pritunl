@@ -3,6 +3,14 @@ variable "hcloud_token" {
   sensitive = true
 }
 
+variable "pritunl_token" {
+  type = object({
+    token = string
+    secret = string
+  })
+  sensitive = true
+}
+
 variable "ssh" {
   type = object({
     name = string
@@ -22,4 +30,16 @@ variable "server" {
 
 variable "domain" {
   type = string
+}
+
+variable "aws_region" {
+  type = string
+  default = "eu-central-1"
+}
+
+variable "aws_client" {
+  type = object({
+    enabled = bool
+    profile_token = string
+  })
 }
